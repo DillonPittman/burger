@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="text-center">
+	  <img src="https://thumbs.gfycat.com/HarmoniousUnsteadyDunnart-small.gif" class="rounded" alt="Eat the Burger">
+	</div>
+
+	<h1 class="text-center">Eat the Burger!</h1>
+	<!-- Row for list of burgers entered -->
+	<div class="row">
+		<!-- Left list: Burgers entered, but not devoured yet -->
+		<div class="col-md-5 burger-box" id="not-devoured">
+			<!-- Pass in data from server.js -->
+			<ul class="list-group">
+			  {{#each burgers}}
+			  	{{#unless devoured}}
+						{{> burgers/burgerNotDevoured-block}}
+					{{/unless}}
+			  {{/each}}
+			</ul>
+		</div>
+
+		<!-- Forcing a space between the two columns -->
+		<div class="col-md-2" id="blank">
+		</div>
+
+		<!-- Right list: Burgers devoured -->
+		<div class="col-md-5 burger-box" id="devoured">
+			<ul class="list-group">
+				{{#each burgers}}
+					{{#if devoured}}
+						{{> burgers/burgerDevoured-block}}
+					{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+
+	<!-- Row for textbox to enter in new burger -->
+	<div class="row justify-content-center bottom">
+		<div class="col-md-5">
+			<form class="create-form">
+				<div class="form-group">
+					<input class="form-control form-control-lg" type="text" name="burger_name" id="burgerInfo" placeholder="Name your burger here">
+					<br>
+					<button type="submit" class="btn btn-primary btn-lg burger-button">Burgerize</button>
+
+					<p class="text-center directions">Type a burger in and click the Burgerize button to create the burger of your dreams. Click the devour button to eat it!</p>
+				</div>
+			</form>
+		</div>
+</div>
