@@ -13,10 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory to be served
-app.use(express.static("app/public"));
+app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+var routes = require("./controllers/burgers_controller.js");
+app.use("/", routes);
 
 // Starts the server to begin listening
 // =============================================================
